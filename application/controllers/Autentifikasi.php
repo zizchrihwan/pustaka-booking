@@ -20,7 +20,7 @@ class Autentifikasi extends CI_Controller
         ]);
         if ($this->form_validation->run() == false) {
             $data['judul'] = 'Login';
-            $data['user'] = '';
+            $data['user'] = 'Queen';
             //kata 'login' merupakan nilai dari variabel judul dalam array $data dikirimkan ke view aute_header
             $this->load->view('templates/aute_header', $data);
             $this->load->view('autentifikasi/login');
@@ -91,7 +91,7 @@ class Autentifikasi extends CI_Controller
         //membuat rule untuk inputan nama agar tidak boleh kosong dengan membuat pesan error dengan
         //bahasa sendiri yaitu 'Nama Belum diisi'
         $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required', [
-            'required' => 'Nama Belum diisi!!'
+            'required' => 'Nama Belum diis!!'
         ]);
         //membuat rule untuk inputan email agar tidak boleh kosong, tidak ada spasi, format email harus valid
         //dan email belum pernah dipakai sama user lain dengan membuat pesan error dengan bahasa sendiri
@@ -138,6 +138,11 @@ class Autentifikasi extends CI_Controller
             $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-message" role="alert">Selamat!! akun member anda sudah dibuat. Silahkan Aktivasi Akun anda</div>');
             redirect('autentifikasi');
         }
+    }
+
+    public function logout()
+    {
+        redirect('autentifikasi/index');
     }
 
 
